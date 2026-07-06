@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://gaechwibboo.com'),
+  metadataBase: new URL('https://gaechwippo.dingco.net'),
   alternates: {
     canonical: '/',
   },
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: '개취뽀 - 개발자 취업을 뽀개는 커뮤니티',
     description:
       '개발자 취업 준비생과 이직 준비생들이 모여 실무 경험과 노하우를 공유하는 오프라인 모임',
-    url: 'https://gaechwibboo.com',
+    url: 'https://gaechwippo.dingco.net',
     siteName: '개취뽀',
     images: [
       {
@@ -85,8 +85,8 @@ export default function RootLayout({
               '@type': 'Organization',
               name: '개취뽀',
               description: '개발자 취업을 뽀개는 커뮤니티',
-              url: 'https://gaechwibboo.com',
-              logo: 'https://gaechwibboo.com/logo.png',
+              url: 'https://gaechwippo.dingco.net',
+              logo: 'https://gaechwippo.dingco.net/logo.png',
               sameAs: [
                 'https://open.kakao.com/o/gPI6kTUg',
                 'https://discord.gg/X74q5Yw3Sv',
