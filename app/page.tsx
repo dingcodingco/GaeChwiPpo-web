@@ -1,12 +1,5 @@
 import { Button } from '@/components/ui/button';
 import { EcosystemBar } from '@/components/ecosystem-bar';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
   Calendar,
@@ -17,7 +10,6 @@ import {
   User,
   Building,
   MessageCircle,
-  Heart,
   BookOpen,
   Award,
 } from 'lucide-react';
@@ -37,7 +29,7 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900">
+    <div className="min-h-screen bg-[#070a14] text-white selection:bg-sky-500/30">
       {/* Header */}
       <header className="border-b border-gray-800 bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
@@ -79,12 +71,6 @@ export default function HomePage() {
               >
                 커뮤니티 채널
               </Link>
-              <Link
-                href="#sponsors"
-                className="text-gray-300 hover:text-white transition-colors"
-              >
-                후원
-              </Link>
               <Link href="/apply">
                 <Button
                   variant="outline"
@@ -101,33 +87,54 @@ export default function HomePage() {
 
       <main>
         {/* Hero Section */}
-        <section className="py-20 px-4">
+        <section className="relative overflow-hidden py-24 md:py-32 px-4">
+          {/* ambient glows + grid */}
+          <div
+            className="pointer-events-none absolute inset-0 -z-10"
+            aria-hidden="true"
+            style={{
+              backgroundImage:
+                'radial-gradient(ellipse 55% 45% at 50% 0%, rgba(56,189,248,0.16) 0%, transparent 60%), radial-gradient(ellipse 40% 40% at 80% 20%, rgba(99,102,241,0.14) 0%, transparent 60%)',
+            }}
+          />
+          <div
+            className="pointer-events-none absolute inset-0 -z-10 opacity-[0.04]"
+            aria-hidden="true"
+            style={{
+              backgroundImage:
+                'linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)',
+              backgroundSize: '48px 48px',
+              maskImage:
+                'radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent 75%)',
+            }}
+          />
           <div className="container mx-auto text-center">
             <div className="max-w-4xl mx-auto">
-              <Badge
-                variant="secondary"
-                className="mb-4 bg-blue-500/20 text-blue-300 border-blue-500/30"
-              >
+              <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-sky-400/25 bg-sky-500/10 px-4 py-1.5 text-sm font-medium text-sky-200">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-60" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-sky-400" />
+                </span>
                 개발자 취업 준비생 커뮤니티
-              </Badge>
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              </span>
+              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.05]">
                 개발자{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-400">
                   취업
                 </span>
                 을 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-indigo-400">
                   뽀개자
                 </span>
               </h1>
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-300/90 mb-10 leading-relaxed">
                 개발자 취업 준비생과 이직 준비생들이 모여 <br />
                 실무 경험과 노하우를 공유하는 모임
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white"
+                  className="bg-gradient-to-r from-sky-500 to-indigo-500 hover:from-sky-400 hover:to-indigo-400 text-white shadow-lg shadow-sky-500/25"
                   asChild
                 >
                   <Link href="/speakers">
@@ -138,7 +145,7 @@ export default function HomePage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-blue-400 text-blue-300 hover:bg-blue-500 hover:text-white hover:border-blue-500"
+                  className="border-white/20 bg-white/5 text-white hover:bg-white/10 hover:border-white/40"
                   asChild
                 >
                   <Link href="#community">
@@ -152,27 +159,27 @@ export default function HomePage() {
         </section>
 
         {/* Stats Section */}
-        <section
-          className="py-16 px-4 bg-gray-800/50"
-          aria-labelledby="stats-heading"
-        >
-          <div className="container mx-auto">
+        <section className="pb-8 px-4" aria-labelledby="stats-heading">
+          <div className="container mx-auto max-w-5xl">
             <h2 id="stats-heading" className="sr-only">
               개취뽀 커뮤니티 통계
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
               {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-500/20 rounded-lg mb-4 border border-blue-500/30">
+                <div
+                  key={index}
+                  className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-6 text-center backdrop-blur-sm transition-colors hover:border-sky-400/30 hover:bg-white/[0.05]"
+                >
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-sky-400/25 bg-sky-500/10">
                     <stat.icon
-                      className="h-6 w-6 text-blue-400"
+                      className="h-5 w-5 text-sky-300"
                       aria-hidden="true"
                     />
                   </div>
-                  <div className="text-2xl font-bold text-white mb-1">
+                  <div className="bg-gradient-to-b from-white to-white/70 bg-clip-text text-3xl font-extrabold tracking-tight text-transparent">
                     {stat.value}
                   </div>
-                  <div className="text-gray-400">{stat.label}</div>
+                  <div className="text-sm text-gray-400">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -200,9 +207,9 @@ export default function HomePage() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* 정기 오프라인 모임 */}
-              <article className="bg-gray-800/50 border-gray-700 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 rounded-lg border">
+              <article className="border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-lg shadow-black/30 transition-all duration-200 hover:-translate-y-1 hover:border-sky-400/40 hover:bg-white/[0.06] hover:shadow-xl hover:shadow-sky-500/10 rounded-2xl border">
                 <div className="p-6">
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-sky-500 to-indigo-600 rounded-lg flex items-center justify-center mb-4">
                     <Users className="h-6 w-6 text-white" aria-hidden="true" />
                   </div>
                   <h3 className="text-white text-xl font-semibold mb-2">
@@ -232,9 +239,9 @@ export default function HomePage() {
               </article>
 
               {/* 스터디 그룹 */}
-              <article className="bg-gray-800/50 border-gray-700 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 rounded-lg border">
+              <article className="border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-lg shadow-black/30 transition-all duration-200 hover:-translate-y-1 hover:border-sky-400/40 hover:bg-white/[0.06] hover:shadow-xl hover:shadow-sky-500/10 rounded-2xl border">
                 <div className="p-6">
-                  <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-sky-500 to-indigo-600 rounded-lg flex items-center justify-center mb-4">
                     <MessageSquare
                       className="h-6 w-6 text-white"
                       aria-hidden="true"
@@ -268,9 +275,9 @@ export default function HomePage() {
               </article>
 
               {/* 면접 질문 대응 */}
-              <article className="bg-gray-800/50 border-gray-700 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 rounded-lg border">
+              <article className="border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-lg shadow-black/30 transition-all duration-200 hover:-translate-y-1 hover:border-sky-400/40 hover:bg-white/[0.06] hover:shadow-xl hover:shadow-sky-500/10 rounded-2xl border">
                 <div className="p-6">
-                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-sky-500 to-indigo-600 rounded-lg flex items-center justify-center mb-4">
                     <Star className="h-6 w-6 text-white" aria-hidden="true" />
                   </div>
                   <h3 className="text-white text-xl font-semibold mb-2">
@@ -298,9 +305,9 @@ export default function HomePage() {
               </article>
 
               {/* 멘토링 프로그램 */}
-              <article className="bg-gray-800/50 border-gray-700 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 rounded-lg border">
+              <article className="border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-lg shadow-black/30 transition-all duration-200 hover:-translate-y-1 hover:border-sky-400/40 hover:bg-white/[0.06] hover:shadow-xl hover:shadow-sky-500/10 rounded-2xl border">
                 <div className="p-6">
-                  <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-sky-500 to-indigo-600 rounded-lg flex items-center justify-center mb-4">
                     <User className="h-6 w-6 text-white" aria-hidden="true" />
                   </div>
                   <h3 className="text-white text-xl font-semibold mb-2">
@@ -328,9 +335,9 @@ export default function HomePage() {
               </article>
 
               {/* 취업 정보 공유 */}
-              <article className="bg-gray-800/50 border-gray-700 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 rounded-lg border">
+              <article className="border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-lg shadow-black/30 transition-all duration-200 hover:-translate-y-1 hover:border-sky-400/40 hover:bg-white/[0.06] hover:shadow-xl hover:shadow-sky-500/10 rounded-2xl border">
                 <div className="p-6">
-                  <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-sky-500 to-indigo-600 rounded-lg flex items-center justify-center mb-4">
                     <Building
                       className="h-6 w-6 text-white"
                       aria-hidden="true"
@@ -363,9 +370,9 @@ export default function HomePage() {
               </article>
 
               {/* 프로젝트 협업 */}
-              <article className="bg-gray-800/50 border-gray-700 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 rounded-lg border">
+              <article className="border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-lg shadow-black/30 transition-all duration-200 hover:-translate-y-1 hover:border-sky-400/40 hover:bg-white/[0.06] hover:shadow-xl hover:shadow-sky-500/10 rounded-2xl border">
                 <div className="p-6">
-                  <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-pink-600 rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-sky-500 to-indigo-600 rounded-lg flex items-center justify-center mb-4">
                     <Calendar
                       className="h-6 w-6 text-white"
                       aria-hidden="true"
@@ -421,7 +428,7 @@ export default function HomePage() {
             <div className="grid md:grid-cols-3 gap-6 mb-12">
               {speakers.map(speaker => (
                 <Link href={`/speakers/${speaker.id}`} key={speaker.id}>
-                  <article className="bg-gray-800/50 border-gray-700 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 cursor-pointer h-full rounded-lg border">
+                  <article className="border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-lg shadow-black/30 transition-all duration-200 hover:-translate-y-1 hover:border-sky-400/40 hover:bg-white/[0.06] hover:shadow-xl hover:shadow-sky-500/10 cursor-pointer h-full rounded-2xl border">
                     <div className="p-6">
                       <div className="flex items-center space-x-3 mb-4">
                         <SpeakerAvatar
@@ -476,7 +483,7 @@ export default function HomePage() {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-blue-400 text-blue-300 hover:bg-blue-500 hover:text-white hover:border-blue-500"
+                className="border-white/20 bg-white/5 text-white hover:bg-white/10 hover:border-white/40"
                 asChild
               >
                 <Link href="/speakers">
@@ -512,7 +519,7 @@ export default function HomePage() {
                 <div className="grid md:grid-cols-2 gap-6 mb-12 max-w-5xl mx-auto">
                   {studies.map(study => (
                     <Link href={`/studies/${study.id}`} key={study.id}>
-                      <article className="bg-gray-800/50 border-gray-700 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 h-full rounded-lg border cursor-pointer">
+                      <article className="border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-lg shadow-black/30 transition-all duration-200 hover:-translate-y-1 hover:border-sky-400/40 hover:bg-white/[0.06] hover:shadow-xl hover:shadow-sky-500/10 h-full rounded-2xl border cursor-pointer">
                         <div className="p-6">
                           {/* Study Header */}
                           <div className="flex items-start justify-between mb-4">
@@ -673,7 +680,7 @@ export default function HomePage() {
         {/* Community Channels Section */}
         <section
           id="community"
-          className="py-20 px-4 bg-gradient-to-r from-blue-600 to-blue-500"
+          className="py-20 px-4 border-y border-white/10 bg-gradient-to-b from-sky-500/[0.07] via-transparent to-transparent"
           aria-labelledby="community-heading"
         >
           <div className="container mx-auto">
@@ -681,135 +688,6 @@ export default function HomePage() {
               커뮤니티 채널
             </h2>
             <CommunityChannels />
-          </div>
-        </section>
-
-        {/* Sponsors Section */}
-        <section
-          id="sponsors"
-          className="py-20 px-4 bg-gray-800/30"
-          aria-labelledby="sponsors-heading"
-        >
-          <div className="container mx-auto">
-            <div className="text-center mb-16">
-              <h2
-                id="sponsors-heading"
-                className="text-3xl md:text-4xl font-bold text-white mb-4"
-              >
-                후원 및 협력
-              </h2>
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                개취뽀와 함께 개발자 커뮤니티의 성장에 기여해주세요
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <Card className="bg-gray-800/50 border-gray-700 shadow-xl">
-                <CardHeader>
-                  <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-pink-600 rounded-lg flex items-center justify-center">
-                      <Heart
-                        className="h-6 w-6 text-white"
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <CardTitle className="text-white">후원 혜택</CardTitle>
-                  </div>
-                  <CardDescription className="text-gray-400">
-                    후원사가 되시면 다음과 같은 혜택을 제공합니다
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3 text-gray-300">
-                    <li className="flex items-start space-x-2">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-                      <span>
-                        <strong>브랜드 노출</strong>: 모든 모임에서 로고 및 회사
-                        소개
-                      </span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-                      <span>
-                        <strong>채용 연계</strong>: 우수 인재 추천 및 채용 공고
-                        우선 노출
-                      </span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-                      <span>
-                        <strong>기술 세션</strong>: 회사 기술 스택 소개 세션
-                        기회 제공
-                      </span>
-                    </li>
-                    <li className="flex items-start space-x-2">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-                      <span>
-                        <strong>네트워킹</strong>: 임직원 대상 특별 네트워킹
-                        이벤트
-                      </span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gray-800/50 border-gray-700 shadow-xl">
-                <CardHeader>
-                  <CardTitle className="text-white">후원 방법</CardTitle>
-                  <CardDescription className="text-gray-400">
-                    다양한 방식으로 개취뽀를 후원할 수 있습니다
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
-                      <h4 className="font-medium text-blue-300 mb-2">
-                        💰 금전 후원
-                      </h4>
-                      <p className="text-gray-300 text-sm">
-                        모임 장소 대관비, 다과비, 운영비 지원
-                      </p>
-                    </div>
-                    <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
-                      <h4 className="font-medium text-green-300 mb-2">
-                        🏢 장소 후원
-                      </h4>
-                      <p className="text-gray-300 text-sm">
-                        세미나실, 회의실 등 모임 공간 제공
-                      </p>
-                    </div>
-                    <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-lg">
-                      <h4 className="font-medium text-purple-300 mb-2">
-                        🎁 굿즈 후원
-                      </h4>
-                      <p className="text-gray-300 text-sm">
-                        참가자 대상 기념품, 상품 등 제공
-                      </p>
-                    </div>
-                    <div className="p-4 bg-orange-500/10 border border-orange-500/20 rounded-lg">
-                      <h4 className="font-medium text-orange-300 mb-2">
-                        👨‍💼 연사 후원
-                      </h4>
-                      <p className="text-gray-300 text-sm">
-                        회사 임직원의 연사 참여 및 노하우 공유
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="text-center">
-              <Link href="/sponsor-apply">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-pink-600 to-pink-500 hover:from-pink-700 hover:to-pink-600 text-white"
-                >
-                  <Heart className="mr-2 h-4 w-4" />
-                  후원 신청하기
-                </Button>
-              </Link>
-            </div>
           </div>
         </section>
 
@@ -847,7 +725,7 @@ export default function HomePage() {
                 <Link href="/apply">
                   <Button
                     size="lg"
-                    className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white"
+                    className="bg-gradient-to-r from-sky-500 to-indigo-500 hover:from-sky-400 hover:to-indigo-400 text-white shadow-lg shadow-sky-500/25"
                   >
                     <User className="mr-2 h-4 w-4" />
                     연사 신청하기
@@ -857,7 +735,7 @@ export default function HomePage() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-blue-400 text-blue-300 hover:bg-blue-500 hover:text-white hover:border-blue-500"
+                    className="border-white/20 bg-white/5 text-white hover:bg-white/10 hover:border-white/40"
                   >
                     연사 신청 가이드 보기
                   </Button>
@@ -931,14 +809,6 @@ export default function HomePage() {
                     className="hover:text-white transition-colors"
                   >
                     연사 신청
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/sponsor-apply"
-                    className="hover:text-white transition-colors"
-                  >
-                    후원 신청
                   </Link>
                 </li>
                 <li>

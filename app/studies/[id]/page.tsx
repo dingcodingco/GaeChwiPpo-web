@@ -456,14 +456,6 @@ const StudyPage = async ({ params }: StudyPageProps) => {
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="/sponsor-apply"
-                    className="hover:text-white transition-colors"
-                  >
-                    후원 신청
-                  </Link>
-                </li>
-                <li>
                   <a
                     href="https://open.kakao.com/o/gPI6kTUg"
                     target="_blank"
