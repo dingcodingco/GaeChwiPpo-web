@@ -55,12 +55,6 @@ export default function SpeakersPage() {
               >
                 커뮤니티 채널
               </Link>
-              <Link
-                href="/#sponsors"
-                className="text-gray-300 hover:text-white transition-colors"
-              >
-                후원
-              </Link>
               <Link href="/apply">
                 <Button
                   variant="outline"
@@ -284,14 +278,6 @@ export default function SpeakersPage() {
                     className="hover:text-white transition-colors"
                   >
                     연사 신청
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/sponsor-apply"
-                    className="hover:text-white transition-colors"
-                  >
-                    후원 신청
                   </Link>
                 </li>
                 <li>
