@@ -1,4 +1,6 @@
 'use client';
+import { EcosystemBar } from '@/components/ecosystem-bar';
+import { KAKAO_CHANNEL_CHAT } from '@/lib/ecosystem';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -682,10 +684,7 @@ export default function SpeakerGuidePage() {
                           variant="outline"
                           className="border-green-500/50 text-green-300 hover:bg-green-500/20"
                           onClick={() =>
-                            window.open(
-                              'https://open.kakao.com/o/gPI6kTUg',
-                              '_blank',
-                            )
+                            window.open(KAKAO_CHANNEL_CHAT, '_blank')
                           }
                         >
                           카카오톡 문의
@@ -739,9 +738,7 @@ export default function SpeakerGuidePage() {
                 size="lg"
                 variant="outline"
                 className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white"
-                onClick={() =>
-                  window.open('https://open.kakao.com/o/gPI6kTUg', '_blank')
-                }
+                onClick={() => window.open(KAKAO_CHANNEL_CHAT, '_blank')}
               >
                 <MessageSquare className="mr-2 h-4 w-4" />
                 사전 문의하기
@@ -848,6 +845,9 @@ export default function SpeakerGuidePage() {
               </ul>
             </div>
           </div>
+
+          {/* 딩코딩코 패밀리 — 연결된 3개 서비스 */}
+          <EcosystemBar />
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
             <p>&copy; 2024 개취뽀. All rights reserved.</p>
