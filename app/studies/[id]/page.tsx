@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { EcosystemBar } from '@/components/ecosystem-bar';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import {
@@ -494,6 +495,9 @@ const StudyPage = async ({ params }: StudyPageProps) => {
               </ul>
             </div>
           </div>
+
+          {/* 딩코딩코 패밀리 — 연결된 3개 서비스 */}
+          <EcosystemBar />
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
             <p>&copy; 2024 개취뽀. All rights reserved.</p>
