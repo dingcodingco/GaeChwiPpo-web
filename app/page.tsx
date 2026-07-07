@@ -110,28 +110,40 @@ export default function HomePage() {
           />
           <div className="container mx-auto text-center">
             <div className="max-w-4xl mx-auto">
-              <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-sky-400/25 bg-sky-500/10 px-4 py-1.5 text-sm font-medium text-sky-200">
+              <span
+                className="gcp-rise mb-6 inline-flex items-center gap-2 rounded-full border border-sky-400/25 bg-sky-500/10 px-4 py-1.5 text-sm font-medium text-sky-200"
+                style={{ '--d': '0ms' } as React.CSSProperties}
+              >
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-60" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-sky-400" />
                 </span>
                 개발자 취업 준비생 커뮤니티
               </span>
-              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.05]">
+              <h1
+                className="gcp-rise text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.05]"
+                style={{ '--d': '90ms' } as React.CSSProperties}
+              >
                 개발자{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-400">
                   취업
                 </span>
                 을 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-indigo-400">
+                <span className="gcp-shimmer text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-indigo-400">
                   뽀개자
                 </span>
               </h1>
-              <p className="text-lg md:text-xl text-gray-300/90 mb-10 leading-relaxed">
+              <p
+                className="gcp-rise text-lg md:text-xl text-gray-300/90 mb-10 leading-relaxed"
+                style={{ '--d': '180ms' } as React.CSSProperties}
+              >
                 개발자 취업 준비생과 이직 준비생들이 모여 <br />
                 실무 경험과 노하우를 공유하는 모임
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div
+                className="gcp-rise flex flex-col sm:flex-row gap-4 justify-center"
+                style={{ '--d': '280ms' } as React.CSSProperties}
+              >
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-sky-500 to-indigo-500 hover:from-sky-400 hover:to-indigo-400 text-white shadow-lg shadow-sky-500/25"
@@ -164,7 +176,7 @@ export default function HomePage() {
             <h2 id="stats-heading" className="sr-only">
               개취뽀 커뮤니티 통계
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+            <div className="gcp-reveal grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
               {stats.map((stat, index) => (
                 <div
                   key={index}
@@ -193,7 +205,7 @@ export default function HomePage() {
           aria-labelledby="activities-heading"
         >
           <div className="container mx-auto">
-            <div className="text-center mb-16">
+            <div className="gcp-reveal text-center mb-16">
               <h2
                 id="activities-heading"
                 className="text-3xl md:text-4xl font-bold text-white mb-4"
@@ -205,7 +217,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="gcp-reveal grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* 정기 오프라인 모임 */}
               <article className="border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-lg shadow-black/30 transition-all duration-200 hover:-translate-y-1 hover:border-sky-400/40 hover:bg-white/[0.06] hover:shadow-xl hover:shadow-sky-500/10 rounded-2xl border">
                 <div className="p-6">
@@ -413,7 +425,7 @@ export default function HomePage() {
           aria-labelledby="speakers-heading"
         >
           <div className="container mx-auto">
-            <div className="text-center mb-16">
+            <div className="gcp-reveal text-center mb-16">
               <h2
                 id="speakers-heading"
                 className="text-3xl md:text-4xl font-bold text-white mb-4"
@@ -425,7 +437,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <div className="gcp-reveal grid md:grid-cols-3 gap-6 mb-12">
               {speakers.map(speaker => (
                 <Link href={`/speakers/${speaker.id}`} key={speaker.id}>
                   <article className="border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-lg shadow-black/30 transition-all duration-200 hover:-translate-y-1 hover:border-sky-400/40 hover:bg-white/[0.06] hover:shadow-xl hover:shadow-sky-500/10 cursor-pointer h-full rounded-2xl border">
@@ -502,7 +514,7 @@ export default function HomePage() {
           aria-labelledby="studies-heading"
         >
           <div className="container mx-auto">
-            <div className="text-center mb-16">
+            <div className="gcp-reveal text-center mb-16">
               <h2
                 id="studies-heading"
                 className="text-3xl md:text-4xl font-bold text-white mb-4"
@@ -516,7 +528,7 @@ export default function HomePage() {
 
             {studies.length > 0 ? (
               <>
-                <div className="grid md:grid-cols-2 gap-6 mb-12 max-w-5xl mx-auto">
+                <div className="gcp-reveal grid md:grid-cols-2 gap-6 mb-12 max-w-5xl mx-auto">
                   {studies.map(study => (
                     <Link href={`/studies/${study.id}`} key={study.id}>
                       <article className="border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-lg shadow-black/30 transition-all duration-200 hover:-translate-y-1 hover:border-sky-400/40 hover:bg-white/[0.06] hover:shadow-xl hover:shadow-sky-500/10 h-full rounded-2xl border cursor-pointer">

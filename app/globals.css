@@ -92,3 +92,51 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  @keyframes gcpRise {
+    from {
+      opacity: 0;
+      transform: translateY(26px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes gcpShimmer {
+    to {
+      background-position: 200% center;
+    }
+  }
+
+  /* Defaults: fully visible (no-JS / reduced-motion / unsupported browsers) */
+  .gcp-rise,
+  .gcp-reveal {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    /* On-load staged entrance (hero) */
+    .gcp-rise {
+      opacity: 0;
+      animation: gcpRise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-delay: var(--d, 0ms);
+    }
+
+    /* Scroll-driven reveal — progressive enhancement, no JS */
+    @supports (animation-timeline: view()) {
+      .gcp-reveal {
+        animation: gcpRise 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 20%;
+      }
+    }
+
+    /* Continuous gradient sweep for accent text */
+    .gcp-shimmer {
+      background-size: 200% auto;
+      animation: gcpShimmer 4.5s linear infinite;
+    }
+  }
+}
